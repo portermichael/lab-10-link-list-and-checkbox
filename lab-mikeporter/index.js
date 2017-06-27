@@ -23,7 +23,7 @@ class LinkedList {
       current = current.next;
     }
   }
-  //
+  // O(n) Loops through all the nodes
   findMiddleNode () {
     let slow, fast;
     slow = fast = this;
@@ -46,44 +46,30 @@ class LinkedList {
     }
     insertAfter.next.remove(node);
   }
-  // O(n^2)
+  // O(n) Looping through once, chopping off the first and creating new list
   reverse (previous) {
-    //  loop through a linkedlist and set collect each value
-    // while doing this set each value to a variable
-    // concern is passing by reference, so overwriting
     let after;
     if (previous === undefined) {
       previous = null;
     }
-    // current = this;
     if (!this.next) {
-      console.log('onceinalifetimeafter', after)
-      return console.log('potato', previous);}
-    // current = Object.assign({}, current);
+      this.next = previous;
+      return this;
+    }
     after = this.next;
-    console.log('after', after);
     this.next = previous;
-    console.log('this.next', this.next);
     previous = this;
-    console.log('previous', previous);
-    console.log('##############')
     after.reverse(previous, after);
   }
-
-  reverseNodes() {
-    let node = this;
-    let pre = null;
-    while (node) {
-      let save = node.next;
-      node.next=pre;
-      pre= node;
-      node = save;
+  //  O(n) loops through all the nodes
+  findNthNode (num) {
+    let P1;
+    P1 = this;
+    for (let i = 0; i < num; i++) {
+      P1 = P1.next;
     }
-    return pre;
+    return P1;
   }
-  // findNthNode (number) {
-  //   let count = 0;
-  // }
 }
 
 module.exports = LinkedList;
