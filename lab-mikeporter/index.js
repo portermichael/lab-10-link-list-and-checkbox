@@ -35,8 +35,8 @@ class LinkedList {
   }
   // O(n) if we want to remove the last node, we would iterate through the whole node
   remove (node) {
-    // take a previous node, and set it's next to the after node
-    // if node is the last node, set it's previous to null
+    if (this === node)
+      return this.next;
     let insertAfter;
     insertAfter = this;
     if (insertAfter.next === node) {
@@ -46,6 +46,7 @@ class LinkedList {
     }
     insertAfter.next.remove(node);
   }
+
   // O(n) Looping through once, chopping off the first and creating new list
   reverse (previous) {
     let after;
@@ -59,8 +60,9 @@ class LinkedList {
     after = this.next;
     this.next = previous;
     previous = this;
-    after.reverse(previous, after);
+    after.reverse(previous);
   }
+
   //  O(n) loops through all the nodes
   findNthNode (num) {
     let P1;
