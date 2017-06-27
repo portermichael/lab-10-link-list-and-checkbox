@@ -60,7 +60,7 @@ class LinkedList {
     after = this.next;
     this.next = previous;
     previous = this;
-    after.reverse(previous);
+    return after.reverse(previous);
   }
 
   //  O(n) loops through all the nodes
