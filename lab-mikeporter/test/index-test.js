@@ -169,10 +169,10 @@ describe('testing index', () => {
       list.appendNode(new LinkedList(7));
       let listLast = new LinkedList(8);
       list.appendNode(listLast);
-      list.reverse();
-      expect(listLast.value).toEqual(8);
-      expect(listLast.next.value).toEqual(7);
-      expect(listLast.next.next.next.next.value).toEqual(4);
+      let x = list.reverse();
+      expect(x.value).toEqual(listLast.value);
+      expect(x.next.value).toEqual(listLast.next.value);
+      expect(x.next.next.next.next.value).toEqual(listLast.next.next.next.next.value);
     });
   });
 });
